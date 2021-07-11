@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>GistRow.qml</file>
+        <file>WorkScripts.mjs</file>
+    </qresource>
+</RCC>
