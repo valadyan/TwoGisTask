@@ -10,8 +10,6 @@
 class FileParser: public QObject
 {
   Q_OBJECT
-
-//  QMap<QString, int8_t> wordsMap;
   QFile* _file;
 public:
   FileParser(QFile* file);

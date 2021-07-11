@@ -1,10 +1,10 @@
 WorkerScript.onMessage = function(msg) {
-    console.log(msg.action + ' ' + msg.word + ' ' + msg.num)
+    console.log(msg.action + ' ' + msg.word + ' ' + msg.num + ' ' + msg.model.count + msg.oldWord)
     var myModel = msg.model
     var word = msg.word
     var num = msg.num
     var oldWord = msg.oldWord
-
+    let topElem
 
     if (msg.action === 'updateNumOfWord') {
         if(myModel.count === 0){
@@ -13,15 +13,14 @@ WorkerScript.onMessage = function(msg) {
             return
         }
         for(var i = 0; i < myModel.count; i++){
-            var topElem = myModel.get(i)
+            topElem = myModel.get(i)
             if(topElem.word === word){
-                myModel.remove(i)
-                myModel.append({word, num})
+                myModel.set(i, {word, num})
                 myModel.sync();
-                break
+                return
             }
-            myModel.append({word, num})
         }
+        myModel.append({word, num})
         myModel.sync();
         return
     }
@@ -29,13 +28,12 @@ WorkerScript.onMessage = function(msg) {
         for(i = 0; i < myModel.count; i++){
             topElem = myModel.get(i)
             if(topElem.word === oldWord){
-                myModel.remove(i)
-                myModel.append({word, num})
-                break
+                myModel.set(i, {word, num})
+                myModel.sync();
+                return
             }
         }
-        myModel.sync();
-        return
+//        console.log('000000000000')
     }
     if (msg.action === 'sortTop') {
         for(i = 0; i < myModel.count - 1; i++){
@@ -43,9 +41,7 @@ WorkerScript.onMessage = function(msg) {
             for(var v = 0; v < myModel.count; v++){
                 var topElemV = myModel.get(v)
                 if(topElem.word < topElem.word){
-                    var buf = topElemV;
-                    topElemV = topElem;
-                    topElem = buf;
+                    //not now
                 }
             }
         }

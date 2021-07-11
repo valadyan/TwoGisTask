@@ -1,35 +1,11 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 
-//import BackLogic 1.0
-
-
 Window {
     visible: true
     width: 640
     height: 480
     title: qsTr("Top15")
-
-//    TopItem {
-//        word: "Amelie"
-//        num: 65
-//    }
-    //        ListElement{
-    //            word: "Keks"
-    //            num: 5
-    //        }
-    //        ListElement{
-    //            word: "Salo"
-    //            num: 23
-    //        }
-    //        ListElement{
-    //            word: "masjanja"
-    //            num: 1
-    //        }
-    //        ListElement{
-    //            word: "palo"
-    //            num: 50
-    //        }
 
     ListModel{
         id: topModel
@@ -57,7 +33,6 @@ Window {
                     maximum: histogram.maxTopNum
                     value: model.num
                     word: model.word
-//                    ColorAnimation on secondColor { duration: r; from: "steelblue"; to: "#CD96CD"; loops: Animation.Infinite }
                 }
             }
         }
@@ -73,6 +48,7 @@ Window {
     function updateNumOfWord(word, num){
         myWorker.sendMessage({'action': 'updateNumOfWord', 'model': topModel,
                              'word': word, 'num': num});
+        histogram.update()
     }
     function changeTopElem(oldWord, word, num){
         myWorker.sendMessage({'action': 'changeTopElem', 'model': topModel,

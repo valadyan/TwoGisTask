@@ -2,15 +2,12 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "FileParser.h"
-#include "TopItem.h"
 #include "Top.h"
 
 int main(int argc, char *argv[])
 {
 
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
-  qmlRegisterType<TopItem>("BackLogic", 1, 0, "TopItem");
 
   QGuiApplication app(argc, argv);
 
@@ -27,7 +24,6 @@ int main(int argc, char *argv[])
   }, Qt::QueuedConnection);
   engine.load(url);
 
-//  QFile* file = new QFile(argv);
   QFile* file = new QFile("text.txt");
   if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
     return app.exec();

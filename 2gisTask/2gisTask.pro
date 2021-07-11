@@ -17,7 +17,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         FileParser.cpp \
         Top.cpp \
-        TopItem.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -35,5 +34,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     FileParser.h \
-    Top.h \
-    TopItem.h
+    Top.h
