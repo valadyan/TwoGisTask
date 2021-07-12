@@ -1,5 +1,4 @@
 WorkerScript.onMessage = function(msg) {
-    console.log(msg.action + ' ' + msg.word + ' ' + msg.num + ' ' + msg.model.count + msg.oldWord)
     var myModel = msg.model
     var word = msg.word
     var num = msg.num
@@ -34,7 +33,6 @@ WorkerScript.onMessage = function(msg) {
                 return
             }
         }
-        console.log('000000000000')
     }
     if (msg.action === 'sortTop') {
         for(i = 0; i < myModel.count - 1; i++){

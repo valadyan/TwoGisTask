@@ -12,7 +12,7 @@ class Top : public QObject
 {
   Q_OBJECT
 
-  QMap<QString, int32_t> _topMap{{"",0}};
+  QMap<QString, int32_t> _topMap;
   QMap<QString, int32_t> _cacheMap;
   int32_t _topSize = 15;
   int32_t _minTopElem = 1;
