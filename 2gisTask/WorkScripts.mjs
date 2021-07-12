@@ -7,6 +7,7 @@ WorkerScript.onMessage = function(msg) {
     let topElem
 
     if (msg.action === 'updateNumOfWord') {
+        WorkerScript.sendMessage({'maxNum': msg.num})
         if(myModel.count === 0){
             myModel.append({word, num})
             myModel.sync();

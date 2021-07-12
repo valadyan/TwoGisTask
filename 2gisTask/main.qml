@@ -7,15 +7,11 @@ Window {
     height: 480
     title: qsTr("Top15")
 
-    ListModel{
-        id: topModel
-    }
-
     Rectangle {
         id: histogram
         anchors.fill: parent
         color: "green"
-        property int maxTopNum: 50
+        property int maxTopNum: 0
 
         Column {
             id: column
@@ -38,11 +34,16 @@ Window {
         }
     }
 
+    ListModel{
+        id: topModel
+    }
+
     WorkerScript{
         id: myWorker
         source: "WorkScripts.mjs"
 
-        onMessage: myText.text = messageObject.reply
+        onMessage: histogram.maxTopNum = histogram.maxTopNum < messageObject.maxNum ?
+                       messageObject.maxNum : histogram.maxTopNum
     }
 
     function updateNumOfWord(word, num){
