@@ -12,10 +12,10 @@ class Top : public QObject
 {
   Q_OBJECT
 
-  QMap<QString, int8_t> _topMap{{"",0}};
-  QMap<QString, int8_t> _cacheMap;
-  int8_t _topSize = 15;
-  int8_t _minTopElem = 1;
+  QMap<QString, int32_t> _topMap{{"",0}};
+  QMap<QString, int32_t> _cacheMap;
+  int32_t _topSize = 15;
+  int32_t _minTopElem = 1;
 
 public slots:
   void addWord(const QString& word);

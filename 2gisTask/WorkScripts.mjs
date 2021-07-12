@@ -34,7 +34,7 @@ WorkerScript.onMessage = function(msg) {
                 return
             }
         }
-//        console.log('000000000000')
+        console.log('000000000000')
     }
     if (msg.action === 'sortTop') {
         for(i = 0; i < myModel.count - 1; i++){
